@@ -16,7 +16,7 @@ class DBConnection
      */
     public function __construct()
     {
-        $this->connection = new Mysqli($this->host, $this->userName, $this->password, $this->database, $this->port);
+        $this->connection = new Mysqli($this->host, $this->userName, $this->password, $this->database, $this->port);//
     }
 
 
