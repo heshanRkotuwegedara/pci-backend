@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "./../ItemBO.php";
+
 class ItemBOImpl implements ItemBO
 {
 
@@ -25,6 +27,6 @@ class ItemBOImpl implements ItemBO
 
     public function getAllItem(): array
     {
-        return array();
+        return array("id: 1", "name: 2");
     }
 }
