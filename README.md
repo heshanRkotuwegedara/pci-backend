@@ -21,7 +21,6 @@ software to provide mobile procurement systems in the construction industry.</p>
  ## 🌱 Contributors </br>
 
 <a href="https://github.com/Black-Clovers/pci-backend/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Black-Clovers/pci-backend
-" />
+  <img src="https://contrib.rocks/image?repo=Black-Clovers/pci-backend/" />
 </a>
 </br>
