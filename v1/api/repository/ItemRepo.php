@@ -6,11 +6,11 @@ interface ItemRepo
 
     public function setConnection(mysqli $connection);
 
-    public function addItem(Item $i): bool;
+    public function addItem(Item $item): bool;
 
     public function deleteItem($code): bool;
 
-    public function updateItem(Item $i): bool;
+    public function updateItem(Item $item): bool;
 
     public function searchItem($code);
 
