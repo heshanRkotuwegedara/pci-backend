@@ -4,18 +4,21 @@ class Site
 {
     private $siteId;
     private $siteName;
-    private $siteAddress;
+    private $siteLocation;
+    private $projectBudet;
 
     /**
      * @param $siteId
      * @param $siteName
-     * @param $siteAddress
+     * @param $siteLocation
+     * @param $projectBudet
      */
-    public function __construct($siteId, $siteName, $siteAddress)
+    public function __construct($siteId, $siteName, $siteLocation, $projectBudet)
     {
         $this->siteId = $siteId;
         $this->siteName = $siteName;
-        $this->siteAddress = $siteAddress;
+        $this->siteLocation = $siteLocation;
+        $this->projectBudet = $projectBudet;
     }
 
     /**
@@ -53,17 +56,33 @@ class Site
     /**
      * @return mixed
      */
-    public function getSiteAddress()
+    public function getSiteLocation()
     {
-        return $this->siteAddress;
+        return $this->siteLocation;
     }
 
     /**
-     * @param mixed $siteAddress
+     * @param mixed $siteLocation
      */
-    public function setSiteAddress($siteAddress)
+    public function setSiteLocation($siteLocation)
     {
-        $this->siteAddress = $siteAddress;
+        $this->siteLocation = $siteLocation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProjectBudet()
+    {
+        return $this->projectBudet;
+    }
+
+    /**
+     * @param mixed $projectBudet
+     */
+    public function setProjectBudet($projectBudet)
+    {
+        $this->projectBudet = $projectBudet;
     }
 
 }

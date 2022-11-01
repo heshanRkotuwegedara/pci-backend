@@ -13,7 +13,6 @@ if ($method == "OPTIONS") {
 
 require_once __DIR__ . "./../../../../api/services/ItemService.php";
 
-$method = $_SERVER["REQUEST_METHOD"];
 $itemService = new ItemService();
 
 if ($method === "GET") {

@@ -1,5 +1,8 @@
 <?php
 
+require_once __DIR__ . "./../model/Site.php";
+require_once __DIR__ . "./../bo/impl/SiteBOImpl.php";
+
 class SiteService
 {
     private $siteBO;
@@ -32,7 +35,7 @@ class SiteService
         return $this->siteBO->searchSite($id);
     }
 
-    public function getAllSite(): array
+    public function getAllSite()
     {
         return $this->siteBO->getAllSite();
     }

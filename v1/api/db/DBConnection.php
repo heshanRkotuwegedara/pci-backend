@@ -5,8 +5,8 @@ class DBConnection
 
     private $host = '127.0.0.1';
     private $userName = "root";
-    private $password = "123";
-    private $database = "pciDB";
+    private $password = "1234";
+    private $database = "pci";
     private $port = "3306";
 
     private $connection;
