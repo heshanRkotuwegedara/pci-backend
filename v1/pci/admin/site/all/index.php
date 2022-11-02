@@ -13,7 +13,6 @@ if ($method == "OPTIONS") {
 
 require_once __DIR__ . "./../../../../api/services/SiteService.php";
 
-$method = $_SERVER["REQUEST_METHOD"];
 $siteService = new SiteService();
 if ($method === "GET") {
     $siteArray = $siteService->getAllSite();

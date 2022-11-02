@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "./../model/Item.php";
+
 interface SiteBO
 {
     public function addSite(Site $site): bool;
@@ -10,5 +12,5 @@ interface SiteBO
 
     public function updateSite(Item $site): bool;
 
-    public function getAllSite(): array;
+    public function getAllSite();
 }

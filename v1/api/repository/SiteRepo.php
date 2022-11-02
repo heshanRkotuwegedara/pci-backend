@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "./../model/Site.php";
+
 interface SiteRepo
 {
     public function setConnection(mysqli $connection);
