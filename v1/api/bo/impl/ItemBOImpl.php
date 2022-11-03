@@ -28,7 +28,10 @@ class ItemBOImpl implements ItemBO
 
     public function updateItem(Item $item): bool
     {
-        return true;
+        $itemRepo = new ItemRepoImpl();
+        $connection = (new DBConnection())->getConnection();
+        $itemRepo->setConnection($connection);
+        return $itemRepo->updateItem($item);
     }
 
     public function getAllItem(): array

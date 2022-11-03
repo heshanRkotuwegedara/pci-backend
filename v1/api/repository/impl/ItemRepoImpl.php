@@ -29,7 +29,12 @@ class ItemRepoImpl implements ItemRepo
 
     public function updateItem(Item $item): bool
     {
-        return true;
+        $response = $this->connection->query("UPDATE item SET itemName='{$item->getItemName()}',itemQty='{$item->getItemQty()}',itemPrice='{$item->getItemPrice()}',itemDescription='{$item->getItemDescription()}' WHERE itemID='{$item->getItemID()}'");
+        if ($response > 0 && $this->connection->affected_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function searchItem($code)

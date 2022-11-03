@@ -35,7 +35,7 @@ if ($method === 'POST') {
     } else {
         echo json_encode([
             'status' => -1,
-            'message' => 'Required fields are missing' . $data->UserId
+            'message' => 'Required fields are missing'
         ]);
         http_response_code(400);
     }
