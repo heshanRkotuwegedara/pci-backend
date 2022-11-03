@@ -14,28 +14,22 @@ if ($method == "OPTIONS") {
 require_once __DIR__ . "./../../../../api/services/SiteService.php";
 
 $siteService = new SiteService();
-if ($method === 'POST') {
+if ($method === 'PUT') {
     $data = json_decode(file_get_contents('php://input'));
-    if (!empty($data->siteName)) {
+    if (!empty($data->siteID)) {
         $siteData = new Site($data->siteID, $data->siteName, $data->siteLocation, $data->projectBudet);
-        $response = $siteService->addSite($siteData);
+        $response = $siteService->updateSite($siteData);
         if ($response) {
-            echo json_encode(array(
-                "message" => "Site created successfully",
-                "status" => "success"
-            ));
+            echo json_encode(['status' => 1, 'message' => 'Data updated successfully.']);
             http_response_code(200);
         } else {
-            echo json_encode(array(
-                "message" => "Site creation failed",
-                "status" => "failed"
-            ));
+            echo json_encode(['status' => 0, 'message' => 'Could not update data.']);
             http_response_code(204);
         }
     } else {
         echo json_encode([
             'status' => -1,
-            'message' => 'Required fields are missing' . $data->UserId
+            'message' => 'Required fields are missing'
         ]);
         http_response_code(400);
     }

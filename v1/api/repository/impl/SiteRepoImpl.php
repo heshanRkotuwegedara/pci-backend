@@ -29,7 +29,12 @@ class SiteRepoImpl implements SiteRepo
 
     public function updateSite(Site $site): bool
     {
-        return false;
+        $response = $this->connection->query("UPDATE site SET siteName='{$site->getSiteName()}',siteLocation='{$site->getSiteLocation()}',projectBudet='{$site->getProjectBudet()}' WHERE siteID='{$site->getSiteId()}'");
+        if ($response > 0 && $this->connection->affected_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function searchSite($site)
