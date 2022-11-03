@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . "./../bo/impl/ItemBOImpl.php";
+require_once __DIR__ . "./../model/Item.php";
 
 class ItemService
 {
