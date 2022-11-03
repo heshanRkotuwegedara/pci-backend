@@ -32,9 +32,12 @@ class SiteBOImpl implements SiteBO
         // TODO: Implement searchSite() method.
     }
 
-    public function updateSite(Item $site): bool
+    public function updateSite(Site $site): bool
     {
-        return false;
+        $siteRepo = new SiteRepoImpl();
+        $connection = (new DBConnection())->getConnection();
+        $siteRepo->setConnection($connection);
+        return $siteRepo->updateSite($site);
     }
 
     public function getAllSite()

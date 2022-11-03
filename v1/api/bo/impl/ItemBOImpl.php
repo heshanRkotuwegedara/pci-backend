@@ -1,32 +1,44 @@
 <?php
 
 require_once __DIR__ . "./../ItemBO.php";
+require_once __DIR__ . "./../../model/Item.php";
+require_once __DIR__ . "./../../db/DBConnection.php";
+require_once __DIR__ . "./../../repository/impl/ItemRepoImpl.php";
 
 class ItemBOImpl implements ItemBO
 {
 
-    public function addItem(Item $i): bool
+    public function addItem(Item $item): bool
+    {
+        $connection = (new DBConnection())->getConnection();
+        $itemRepo = new ItemRepoImpl();
+        $itemRepo->setConnection($connection);
+        return $itemRepo->addItem($item);
+    }
+
+    public function deleteItem($id): bool
     {
         return true;
     }
 
-    public function deleteItem($code): bool
-    {
-        return true;
-    }
-
-    public function searchItem($code)
+    public function searchItem($id)
     {
         // TODO: Implement searchItem() method.
     }
 
-    public function updateItem(Item $i): bool
+    public function updateItem(Item $item): bool
     {
-        return true;
+        $itemRepo = new ItemRepoImpl();
+        $connection = (new DBConnection())->getConnection();
+        $itemRepo->setConnection($connection);
+        return $itemRepo->updateItem($item);
     }
 
     public function getAllItem(): array
     {
-        return array("id: 1", "name: 2");
+        $itemRepo = new ItemRepoImpl();
+        $connection = (new DBConnection())->getConnection();
+        $itemRepo->setConnection($connection);
+        return $itemRepo->getAllItems();
     }
 }

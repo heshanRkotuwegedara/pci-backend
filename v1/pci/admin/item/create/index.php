@@ -11,23 +11,23 @@ if ($method == "OPTIONS") {
     die();
 }
 
-require_once __DIR__ . "./../../../../api/services/SiteService.php";
+require_once __DIR__ . "./../../../../api/services/ItemService.php";
 
-$siteService = new SiteService();
+$itemService = new ItemService;
 if ($method === 'POST') {
     $data = json_decode(file_get_contents('php://input'));
-    if (!empty($data->siteName)) {
-        $siteData = new Site($data->siteID, $data->siteName, $data->siteLocation, $data->projectBudet);
-        $response = $siteService->addSite($siteData);
+    if (!empty($data->itemName)) {
+        $itemData = new Item($data->itemID, $data->itemName, $data->itemQty, $data->itemPrice, $data->itemDescription);
+        $response = $itemService->addItem($itemData);
         if ($response) {
             echo json_encode(array(
-                "message" => "Site created successfully",
+                "message" => "Item created successfully",
                 "status" => "success"
             ));
             http_response_code(200);
         } else {
             echo json_encode(array(
-                "message" => "Site creation failed",
+                "message" => "Item creation failed",
                 "status" => "failed"
             ));
             http_response_code(204);
@@ -35,7 +35,7 @@ if ($method === 'POST') {
     } else {
         echo json_encode([
             'status' => -1,
-            'message' => 'Required fields are missing' . $data->UserId
+            'message' => 'Required fields are missing'
         ]);
         http_response_code(400);
     }

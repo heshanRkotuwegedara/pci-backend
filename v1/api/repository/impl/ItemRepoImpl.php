@@ -14,7 +14,12 @@ class ItemRepoImpl implements ItemRepo
 
     public function addItem(Item $item): bool
     {
-        return true;
+        $response = $this->connection->query("INSERT INTO item(itemName,itemQty,itemPrice,itemDescription) VALUES('{$item->getItemName()}','{$item->getItemQty()}','{$item->getItemPrice()}','{$item->getItemDescription()}')");
+        if ($response > 0 && $this->connection->affected_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function deleteItem($code): bool
@@ -24,7 +29,12 @@ class ItemRepoImpl implements ItemRepo
 
     public function updateItem(Item $item): bool
     {
-        return true;
+        $response = $this->connection->query("UPDATE item SET itemName='{$item->getItemName()}',itemQty='{$item->getItemQty()}',itemPrice='{$item->getItemPrice()}',itemDescription='{$item->getItemDescription()}' WHERE itemID='{$item->getItemID()}'");
+        if ($response > 0 && $this->connection->affected_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function searchItem($code)
@@ -34,6 +44,18 @@ class ItemRepoImpl implements ItemRepo
 
     public function getAllItems(): array
     {
-        return array();
+        $data = [];
+        $resultSet = $this->connection->query("SELECT * FROM item");
+        $i = 0;
+        while ($row = $resultSet->fetch_assoc()) {
+            $data[$i]['itemID'] = $row['itemID'];
+            $data[$i]['itemName'] = $row['itemName'];
+            $data[$i]['itemQty'] = $row['itemQty'];
+            $data[$i]['itemPrice'] = $row['itemPrice'];
+            $data[$i]['itemDescription'] = $row['itemDescription'];
+            $i++;
+        }
+
+        return $data;
     }
 }
